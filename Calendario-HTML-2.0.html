@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<head>
+<html lang="es_ES" >
+<meta charset="UTF-8" >
+<meta name="author" content="Pol Flórez Viciana" >
+<meta name="owner" content="Pol Flórez Viciana" >
+<meta name="keywords" content="" >
+<title>Calendario Español en HTML ON-LINE - Calendar in English HTML ON-LINE</title>
+<meta name="description" content="Consulta una Fecha con Este Programa de Calendario" >
+<meta name="robots" content="index, dofollow" >
+<script src="./js/calendario-module.js" ></script>
+</head>
+<body onload="LoadData()">
+<center>
+<h1 id="Titulo" >Calendario HTML ON-LINE</h1>
+<form>
+<input type="radio" id="Espanol" name="Espanol" checked onclick="SetCalendar()" />Español
+<input type="radio" id="Ingles" name="Espanol" onclick="SetCalendar()"  />English
+<br>
+<input type="number" id="NumeroDia" value="1" />
+<input type="number" id="NumeroMes" value="1" />
+<input type="number" id="NumeroAno" value="2019" />
+<input type="button" value="Ok" onclick="SetCalendar()" /><br>
+</form>
+<br>
+<div id="Cuadro1" ></div>
+</center>
+<script>
+function LoadData(){
+	var Fecha = new Date();
+	var SelDia = Dia(Fecha);
+	var SelMes = Mes(Fecha);
+	var SelAno = Ano(Fecha);
+	//var Titulo = document.getElementById("Titulo").innerHTML;
+	var Idioma = document.getElementById("Espanol").checked;
+	var ControlCuadro = document.getElementById("Cuadro1");
+	var CoDia = document.getElementById("NumeroDia");
+	CoDia.value = parseInt(SelDia);
+	var CoMes = document.getElementById("NumeroMes");
+	CoMes.value = parseInt(SelMes);
+	var CoAno = document.getElementById("NumeroAno");
+	CoAno.value = parseInt(SelAno);
+	if ( Idioma == true ) {
+		document.getElementById("Titulo").innerHTML = "Calendario Español en HTML ON-LINE";
+		ControlCuadro.innerHTML = CrearCalendarioES(SelDia, SelMes, SelAno);
+	}else{
+		document.getElementById("Titulo").innerHTML = "Calendar English in HTML ON-LINE";
+		ControlCuadro.innerHTML = CrearCalendarioEN(SelDia, SelMes, SelAno);
+	}
+}
+function SetCalendar(){
+	var Idioma = document.getElementById("Espanol").checked;
+	var ControlCuadro = document.getElementById("Cuadro1");
+	var NumeDia = document.getElementById("NumeroDia").value;
+	var NumeMes = document.getElementById("NumeroMes").value;
+	var NumeAno = document.getElementById("NumeroAno").value;
+	var SelDia = parseInt(NumeDia);
+	var SelMes = parseInt(NumeMes);
+	var SelAno = parseInt(NumeAno);
+	if ( Idioma == true ) {
+		document.getElementById("Titulo").innerHTML = "Calendario Español en HTML ON-LINE";
+		ControlCuadro.innerHTML = CrearCalendarioES(SelDia, SelMes, SelAno);
+	}else{
+		document.getElementById("Titulo").innerHTML = "Calendar English in HTML ON-LINE";
+		ControlCuadro.innerHTML = CrearCalendarioEN(SelDia, SelMes, SelAno);
+	}
+}
+</script>
+</body>
+</html>
